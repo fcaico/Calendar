@@ -11,26 +11,18 @@ using System.CodeDom.Compiler;
 
 namespace CalendarSample
 {
-	[Register ("CalendarSampleViewController")]
-	partial class CalendarSampleViewController
+	[Register ("CalenderViewController")]
+	partial class CalenderViewController
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UIButton TryDateButton { get; set; }
-
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UIDatePicker TryDatePicker { get; set; }
+		Fcaico.Controls.Calendar.CalendarView Calendar { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
-			if (TryDateButton != null) {
-				TryDateButton.Dispose ();
-				TryDateButton = null;
-			}
-			if (TryDatePicker != null) {
-				TryDatePicker.Dispose ();
-				TryDatePicker = null;
+			if (Calendar != null) {
+				Calendar.Dispose ();
+				Calendar = null;
 			}
 		}
 	}

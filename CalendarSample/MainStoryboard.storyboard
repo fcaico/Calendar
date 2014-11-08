@@ -21,7 +21,7 @@
         </scene>
         <scene sceneID="10">
             <objects>
-                <viewController id="7" sceneMemberID="viewController">
+                <viewController id="7" sceneMemberID="viewController" customClass="CalendarSampleViewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2"/>
                         <viewControllerLayoutGuide type="bottom" id="3"/>
@@ -58,7 +58,11 @@
                             <constraint firstItem="22" firstAttribute="top" secondItem="16" secondAttribute="bottom" constant="75" id="24"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="11"/>
+                    <navigationItem key="navigationItem" title="Pick Date to Select" id="11"/>
+                    <connections>
+                        <outlet property="TryDateButton" destination="22" id="name-outlet-22"/>
+                        <outlet property="TryDatePicker" destination="16" id="name-outlet-16"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="13" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -66,7 +70,7 @@
         </scene>
         <scene sceneID="27">
             <objects>
-                <viewController id="28" sceneMemberID="viewController">
+                <viewController id="28" sceneMemberID="viewController" customClass="CalenderViewController" title="Calendar View">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="25"/>
                         <viewControllerLayoutGuide type="bottom" id="26"/>
@@ -90,6 +94,9 @@
                             <constraint firstItem="36" firstAttribute="top" secondItem="25" secondAttribute="bottom" constant="100" id="40"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="Calendar" destination="36" id="name-outlet-36"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="30" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

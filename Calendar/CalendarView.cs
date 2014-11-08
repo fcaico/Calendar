@@ -12,8 +12,8 @@ namespace Fcaico.Controls.Calendar
 	{
         #region Data Members
 
-        private DateTime _date = DateTime.MinValue;
-        private DateTime _selectedDate = DateTime.MinValue;
+        private DateTime _date = DateTime.Now;
+        private DateTime _selectedDate = DateTime.Now;
 
         private MonthHeader _monthHeader;
         private DayGrid _dayGrid;

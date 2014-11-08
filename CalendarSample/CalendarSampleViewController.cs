@@ -27,6 +27,7 @@ namespace CalendarSample
 			base.ViewDidLoad ();
 			
 			// Perform any additional setup after loading the view, typically from a nib.
+			TryDatePicker.TimeZone = NSTimeZone.LocalTimeZone;
 		}
 
 		public override void ViewWillAppear (bool animated)
@@ -49,6 +50,15 @@ namespace CalendarSample
 			base.ViewDidDisappear (animated);
 		}
 
+		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)
+		{
+			base.PrepareForSegue (segue, sender);
+
+			var calendarVC = segue.DestinationViewController as CalenderViewController;
+			if (calendarVC != null) {
+				calendarVC.SelectedDate = TryDatePicker.Date;
+			}
+		}
 		#endregion
 	}
 }
