@@ -4,7 +4,7 @@ using MonoTouch.UIKit;
 using System.Globalization;
 using MonoTouch.Foundation;
 
-namespace YuFit.IOS.Controls.Calendar
+namespace Fcaico.Controls.Calendar
 {
     public class DayNameView : UILabel
     {

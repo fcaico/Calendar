@@ -2,7 +2,7 @@
 using MonoTouch.UIKit;
 using System.Drawing;
 
-namespace YuFit.IOS.Controls.Calendar
+namespace Fcaico.Controls.Calendar
 {
     public sealed class DayView : UIView
     {

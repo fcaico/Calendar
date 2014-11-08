@@ -5,7 +5,7 @@ using System.CodeDom.Compiler;
 using System.Drawing;
 using System.ComponentModel;
 
-namespace YuFit.IOS.Controls.Calendar
+namespace Fcaico.Controls.Calendar
 {
 	[Register ("CalendarView"), DesignTimeVisible(true)]
 	public class CalendarView : UIView, IComponent
@@ -29,7 +29,7 @@ namespace YuFit.IOS.Controls.Calendar
         private UIColor _weekendDaysColor = UIColor.Black;
         private UIColor _previousAndNextMonthDaysColor = UIColor.LightGray;
 
-        private UIColor _monthColor = UIColor.Clear;
+        private UIColor _monthColor = UIColor.Black;
         private UIColor _monthBackgroundColor = UIColor.Clear;
         private UIColor _monthSeparatorColor = UIColor.Clear;
         private UIColor _selectionColor = UIColor.Red;

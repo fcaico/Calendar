@@ -5,7 +5,7 @@ using System.Globalization;
 using MonoTouch.Foundation;
 using System.Collections.Generic;
 
-namespace YuFit.IOS.Controls.Calendar
+namespace Fcaico.Controls.Calendar
 {
     public class DayGrid : UIView
     {

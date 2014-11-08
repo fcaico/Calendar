@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace YuFit.IOS.Controls.Calendar
+namespace Fcaico.Controls.Calendar
 {
     public class DateSelectedEventArgs : EventArgs
     {
