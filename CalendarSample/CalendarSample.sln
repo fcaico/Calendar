@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarSample", "CalendarSample.csproj", "{1D353D51-E92D-4269-B649-95C81630511B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fcaico.Controls.Calendar", "..\Calendar\Fcaico.Controls.Calendar.csproj", "{A5118998-8675-4C45-826D-ABC43FF09C42}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Release|iPhone = Release|iPhone
+		Ad-Hoc|iPhone = Ad-Hoc|iPhone
+		AppStore|iPhone = AppStore|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1D353D51-E92D-4269-B649-95C81630511B}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{1D353D51-E92D-4269-B649-95C81630511B}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{1D353D51-E92D-4269-B649-95C81630511B}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{1D353D51-E92D-4269-B649-95C81630511B}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{1D353D51-E92D-4269-B649-95C81630511B}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{1D353D51-E92D-4269-B649-95C81630511B}.Debug|iPhone.Build.0 = Debug|iPhone
+		{1D353D51-E92D-4269-B649-95C81630511B}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{1D353D51-E92D-4269-B649-95C81630511B}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{1D353D51-E92D-4269-B649-95C81630511B}.Release|iPhone.ActiveCfg = Release|iPhone
+		{1D353D51-E92D-4269-B649-95C81630511B}.Release|iPhone.Build.0 = Release|iPhone
+		{1D353D51-E92D-4269-B649-95C81630511B}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{1D353D51-E92D-4269-B649-95C81630511B}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{A5118998-8675-4C45-826D-ABC43FF09C42}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
+		{A5118998-8675-4C45-826D-ABC43FF09C42}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
+		{A5118998-8675-4C45-826D-ABC43FF09C42}.AppStore|iPhone.ActiveCfg = Release|Any CPU
+		{A5118998-8675-4C45-826D-ABC43FF09C42}.AppStore|iPhone.Build.0 = Release|Any CPU
+		{A5118998-8675-4C45-826D-ABC43FF09C42}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{A5118998-8675-4C45-826D-ABC43FF09C42}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{A5118998-8675-4C45-826D-ABC43FF09C42}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{A5118998-8675-4C45-826D-ABC43FF09C42}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{A5118998-8675-4C45-826D-ABC43FF09C42}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{A5118998-8675-4C45-826D-ABC43FF09C42}.Release|iPhone.Build.0 = Release|Any CPU
+		{A5118998-8675-4C45-826D-ABC43FF09C42}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{A5118998-8675-4C45-826D-ABC43FF09C42}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = CalendarSample.csproj
+	EndGlobalSection
+EndGlobal
