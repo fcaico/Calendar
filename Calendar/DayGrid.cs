@@ -268,7 +268,7 @@ namespace Fcaico.Controls.Calendar
                         dayCell.Frame = new RectangleF(curLocation, cellSize);
                         dayCell.Hidden = false;
 
-                        if (curDay == SelectedDate)
+						if (SelectedDate.IsSameDate(curDay))
                         {
                             dayCell.Selected = true;
                         }
