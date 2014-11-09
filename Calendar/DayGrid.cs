@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Fcaico.Controls.Calendar
 {
-    public class DayGrid : UIView
+	internal class DayGrid : UIView
     {
         #region Data Members;
 

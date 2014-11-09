@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Fcaico.Controls.Calendar</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>Calendar</AssemblyName>
+    <AssemblyName>Fcaico.Controls.Calendar</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,6 +47,7 @@
     <Compile Include="DayView.cs" />
     <Compile Include="MonthHeader.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="CalendarViewStyleKit.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
 </Project>

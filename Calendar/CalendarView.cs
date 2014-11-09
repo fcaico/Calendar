@@ -22,27 +22,27 @@ namespace Fcaico.Controls.Calendar
         private bool _hidePreviousAndNextMonthDays = true;
         private string _monthFormatString = "MMMM";
 
-        private UIColor _dayNamesColor = UIColor.Black;
-        private UIColor _dayNamesBackgroundColor = UIColor.Clear;
-        private UIColor _daysBackgroundColor = UIColor.Clear;
-        private UIColor _weekdaysColor = UIColor.Black;
-        private UIColor _weekendDaysColor = UIColor.Black;
-        private UIColor _previousAndNextMonthDaysColor = UIColor.LightGray;
+		private UIColor _dayNamesColor = CalendarViewStyleKit.DayNamesColor;
+		private UIColor _dayNamesBackgroundColor = CalendarViewStyleKit.DayNamesBackgroundColor;
+		private UIColor _daysBackgroundColor = CalendarViewStyleKit.DaysBackgroundColor;
+		private UIColor _weekdaysColor = CalendarViewStyleKit.WeekdaysColor;
+		private UIColor _weekendDaysColor = CalendarViewStyleKit.WeekendDaysColor;
+		private UIColor _previousAndNextMonthDaysColor = CalendarViewStyleKit.PreviousAndNextMonthDaysColor;
 
-        private UIColor _monthColor = UIColor.Black;
-        private UIColor _monthBackgroundColor = UIColor.Clear;
-        private UIColor _monthSeparatorColor = UIColor.Clear;
-        private UIColor _selectionColor = UIColor.Red;
-        private UIColor _ruleColor = UIColor.White;
+		private UIColor _monthColor = CalendarViewStyleKit.MonthColor;
+		private UIColor _monthBackgroundColor = CalendarViewStyleKit.MonthBackgroundColor;
+		private UIColor _monthSeparatorColor = CalendarViewStyleKit.MonthSeparatorColor;
+		private UIColor _selectionColor = CalendarViewStyleKit.SelectionColor;
+		private UIColor _ruleColor = CalendarViewStyleKit.RuleColor;
 
-        private UIFont _dayNameFont = UIFont.SystemFontOfSize(22);
-        private UIFont _monthFont = UIFont.SystemFontOfSize(22);
-        private UIFont _weekDayFont = UIFont.SystemFontOfSize(22);
-        private UIFont _weekEndFont = UIFont.SystemFontOfSize(22);
-        private UIFont _selectionFont = UIFont.SystemFontOfSize(22);
+		private UIFont _dayNameFont = CalendarViewStyleKit.DayNameFont;
+		private UIFont _monthFont = CalendarViewStyleKit.MonthFont;
+		private UIFont _weekDayFont = CalendarViewStyleKit.WeekDayFont;
+		private UIFont _weekEndFont = CalendarViewStyleKit.WeekEndFont;
+		private UIFont _selectionFont = CalendarViewStyleKit.SelectionFont;
 
-        private UIImage _previousMonthImage = UIImage.FromBundle("Calendar/leftArrow");
-        private UIImage _nextMonthImage = UIImage.FromBundle("Calendar/rightArrow");
+        private UIImage _previousMonthImage;
+        private UIImage _nextMonthImage;
         private UIImage _selectionImage = null;
 
         private UIView _bottomRule = new UIView();
@@ -531,20 +531,8 @@ namespace Fcaico.Controls.Calendar
 		private void Initialize()
 		{
             BackgroundColor = UIColor.Clear;
-
-            _monthHeader = new MonthHeader(this);
-            _monthHeader.NextMonth += OnNextMonth;
-            _monthHeader.PreviousMonth += OnPreviousMonth;
-
-            _dayGrid = new DayGrid(this);
-            _dayGrid.DateSelected += OnDateSelected;
-
-
-            Add (_monthHeader);
-            Add(_dayGrid);
-            Add(_bottomRule);
-
-            SetupConstraints();
+			SetupSubviews ();
+			SetupConstraints ();
         }
 
 		public override void AwakeFromNib ()
@@ -553,9 +541,7 @@ namespace Fcaico.Controls.Calendar
 			Initialize ();
 		}        
 
-		public event EventHandler Disposed;
-
-        protected override void Dispose (bool disposing)
+		protected override void Dispose (bool disposing)
         {
             if (disposing)
             {
@@ -565,6 +551,26 @@ namespace Fcaico.Controls.Calendar
             }
             base.Dispose(disposing);
         }
+
+		private void SetupSubviews()
+		{
+			_monthHeader = new MonthHeader(this);
+			_monthHeader.NextMonth += OnNextMonth;
+			_monthHeader.PreviousMonth += OnPreviousMonth;
+
+			_dayGrid = new DayGrid(this);
+			_dayGrid.DateSelected += OnDateSelected;
+
+			_previousMonthImage = CalendarViewStyleKit.ImageOfPreviousMonth(
+				new RectangleF(0, 0, 30, 30), _selectionColor);
+
+			_nextMonthImage = CalendarViewStyleKit.ImageOfNextMonth(
+				new RectangleF(0, 0, 30, 30), _selectionColor);
+
+			Add (_monthHeader);
+			Add(_dayGrid);
+			Add(_bottomRule);
+		}
 
         private void SetupConstraints()
         {
@@ -590,18 +596,20 @@ namespace Fcaico.Controls.Calendar
 
         }
 
-        public override void Draw (RectangleF rect)
-        {
-            _bottomRule.BackgroundColor = RuleColor;
+		public event EventHandler Disposed;
 
-            base.Draw(rect);
-        }
-
-        #endregion
+		#endregion
 
         #region Methods
 
-        private void OnDateSelected (object sender, DateSelectedEventArgs e)
+		public override void Draw (RectangleF rect)
+		{
+			_bottomRule.BackgroundColor = RuleColor;
+
+			base.Draw(rect);
+		}
+
+		private void OnDateSelected (object sender, DateSelectedEventArgs e)
         {
             SelectedDate = e.Date;
             RaiseSelectedDateChanged();

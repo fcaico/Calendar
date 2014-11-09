@@ -87,6 +87,9 @@
                                     <constraint firstItem="36" firstAttribute="height" constant="240" id="38"/>
                                     <constraint firstItem="36" firstAttribute="width" constant="280" id="39"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="UseDayInitials" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <constraints>

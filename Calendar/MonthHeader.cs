@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace Fcaico.Controls.Calendar
 {
-	public class MonthHeader : UIView 
+	internal class MonthHeader : UIView 
 	{
 		private readonly UILabel _monthLabel;
         private readonly UIButton _previousButton;

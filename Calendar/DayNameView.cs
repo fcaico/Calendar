@@ -6,7 +6,7 @@ using MonoTouch.Foundation;
 
 namespace Fcaico.Controls.Calendar
 {
-    public class DayNameView : UILabel
+    internal class DayNameView : UILabel
     {
         private static readonly string[] _daysOfWeek;
         private readonly CalendarView _calendar;

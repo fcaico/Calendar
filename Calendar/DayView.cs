@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace Fcaico.Controls.Calendar
 {
-    public sealed class DayView : UIView
+    internal sealed class DayView : UIView
     {
         #region Data Members;
 

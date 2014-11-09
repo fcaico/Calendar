@@ -3,14 +3,32 @@ using System.Drawing;
 using MonoTouch.UIKit;
 using MonoTouch.CoreGraphics;
 
-namespace CalendarSample
+namespace Fcaico.Controls.Calendar
 {
-	public static class Resources
+	internal static class CalendarViewStyleKit
 	{
+		public static UIColor DayNamesColor = UIColor.Black;
+		public static UIColor DayNamesBackgroundColor = UIColor.Clear;
+		public static UIColor DaysBackgroundColor = UIColor.Clear;
+		public static UIColor WeekdaysColor = UIColor.Black;
+		public static UIColor WeekendDaysColor = UIColor.Black;
+		public static UIColor PreviousAndNextMonthDaysColor = UIColor.LightGray;
+
+		public static UIColor MonthColor = UIColor.Black;
+		public static UIColor MonthBackgroundColor = UIColor.Clear;
+		public static UIColor MonthSeparatorColor = UIColor.Clear;
+		public static UIColor SelectionColor = UIColor.Orange;
+		public static UIColor RuleColor = UIColor.White;
+
+		public static UIFont DayNameFont = UIFont.SystemFontOfSize(22);
+		public static UIFont MonthFont = UIFont.SystemFontOfSize(22);
+		public static UIFont WeekDayFont = UIFont.SystemFontOfSize(22);
+		public static UIFont WeekEndFont = UIFont.SystemFontOfSize(22);
+		public static UIFont SelectionFont = UIFont.SystemFontOfSize(22);
+
 		public static void DrawPreviousMonth(RectangleF frame, UIColor monthChangeColor)
 		{
-
-			//// Bezier Drawing
+			// Bezier Drawing
 			UIBezierPath bezierPath = new UIBezierPath();
 			bezierPath.MoveTo(new PointF(frame.GetMinX() + 19.93f, frame.GetMinY() + 2.11f));
 			bezierPath.AddLineTo(new PointF(frame.GetMinX() + 7.31f, frame.GetMinY() + 14.77f));
@@ -29,8 +47,7 @@ namespace CalendarSample
 
 		public static void DrawNextMonth(RectangleF frame, UIColor monthChangeColor)
 		{
-
-			//// Bezier Drawing
+			// Bezier Drawing
 			UIBezierPath bezierPath = new UIBezierPath();
 			bezierPath.MoveTo(new PointF(frame.GetMinX() + 7.21f, frame.GetMinY() + 3.22f));
 			bezierPath.AddLineTo(new PointF(frame.GetMinX() + 19.82f, frame.GetMinY() + 15.88f));
@@ -50,7 +67,7 @@ namespace CalendarSample
 		public static UIImage ImageOfPreviousMonth(RectangleF frame, UIColor monthChangeColor)
 		{
 			UIGraphics.BeginImageContextWithOptions(frame.Size, false, 0);
-			Resources.DrawPreviousMonth(frame, monthChangeColor);
+			CalendarViewStyleKit.DrawPreviousMonth(frame, monthChangeColor);
 
 			var imageOfPreviousMonth = UIGraphics.GetImageFromCurrentImageContext();
 			UIGraphics.EndImageContext();
@@ -61,7 +78,7 @@ namespace CalendarSample
 		public static UIImage ImageOfNextMonth(RectangleF frame, UIColor monthChangeColor)
 		{
 			UIGraphics.BeginImageContextWithOptions(frame.Size, false, 0);
-			Resources.DrawNextMonth(frame, monthChangeColor);
+			CalendarViewStyleKit.DrawNextMonth(frame, monthChangeColor);
 
 			var imageOfNextMonth = UIGraphics.GetImageFromCurrentImageContext();
 			UIGraphics.EndImageContext();

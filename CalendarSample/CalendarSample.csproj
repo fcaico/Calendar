@@ -103,7 +103,6 @@
     <Compile Include="CalenderViewController.designer.cs">
       <DependentUpon>CalenderViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Resources.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
