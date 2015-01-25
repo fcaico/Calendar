@@ -89,6 +89,7 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="UseDayInitials" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="DisablePastDates" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>

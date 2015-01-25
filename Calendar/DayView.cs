@@ -12,6 +12,7 @@ namespace Fcaico.Controls.Calendar
         private DateTime _dayRepresented = DateTime.Now;
         private bool _selected;
         private bool _isCurrentMonth;
+        private bool _isInThePast;
         private readonly UIImageView _imageView;
         private readonly UILabel _textView;
 
@@ -48,6 +49,22 @@ namespace Fcaico.Controls.Calendar
                 if (_selected != value)
                 {
                     _selected = value;
+                    SetNeedsDisplay();
+                }
+            }
+        }
+
+        public bool IsInThePast
+        {
+            get
+            {
+                return _isInThePast;
+            }
+            set
+            {
+                if (_isInThePast != value)
+                {
+                    _isInThePast = value;
                     SetNeedsDisplay();
                 }
             }
@@ -141,35 +158,36 @@ namespace Fcaico.Controls.Calendar
             }
         }
 
-        public override void TouchesBegan (MonoTouch.Foundation.NSSet touches, UIEvent evt)
+        private void SelectDateIfAppropriate()
         {
-            base.TouchesBegan (touches, evt);
+            if (IsInThePast && _calendar.DisablePastDates)
+            {
+                return;
+            }
 
             if (IsCurrentMonth && !Selected)
             {
                 Selected = true;
                 RaiseDaySelected();
             }
+        }
+
+        public override void TouchesBegan (MonoTouch.Foundation.NSSet touches, UIEvent evt)
+        {
+            base.TouchesBegan (touches, evt);
+            SelectDateIfAppropriate();
         }
 
         public override void TouchesMoved (MonoTouch.Foundation.NSSet touches, UIEvent evt)
         {
             base.TouchesMoved(touches, evt);
-            if (IsCurrentMonth && !Selected)
-            {
-                Selected = true;
-                RaiseDaySelected();
-            }
+            SelectDateIfAppropriate();
         }
 
         public override void TouchesEnded (MonoTouch.Foundation.NSSet touches, UIEvent evt)
         {
             base.TouchesEnded(touches, evt);
-            if (IsCurrentMonth && !Selected)
-            {
-                Selected = true;
-                RaiseDaySelected();
-            }
+            SelectDateIfAppropriate();
         }
 
         private void SetFont()
@@ -190,7 +208,7 @@ namespace Fcaico.Controls.Calendar
             {
                 _textView.TextColor = _calendar.SelectionColor;
             }
-            else if (!IsCurrentMonth)
+            else if ((_calendar.DisablePastDates && IsInThePast) || !IsCurrentMonth)
             {
                 _textView.TextColor = _calendar.PreviousAndNextMonthDaysColor;
             }

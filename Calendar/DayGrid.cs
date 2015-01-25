@@ -225,9 +225,11 @@ namespace Fcaico.Controls.Calendar
                     day.Year == nextMonth.Year);
         }
                 
-        private bool IsInTheCurrentMonth(DateTime day)
+
+
+        private bool IsInThePast(DateTime day)
         {
-            return (day.Month == _date.Month && day.Year == _date.Year);
+            return (day < new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day));
         }
 
         private void DrawDaysOfMonth()
@@ -278,7 +280,9 @@ namespace Fcaico.Controls.Calendar
                         }
 
                         dayCell.DayRepresented = curDay;
-                        dayCell.IsCurrentMonth = IsInTheCurrentMonth(curDay);
+                        dayCell.IsCurrentMonth = _calendar.IsInTheCurrentMonth(curDay);
+                        dayCell.IsInThePast = IsInThePast(curDay);
+
 
                         dayCell.SetNeedsDisplay();
 

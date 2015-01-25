@@ -17,6 +17,7 @@ namespace Fcaico.Controls.Calendar
 
         private MonthHeader _monthHeader;
         private DayGrid _dayGrid;
+        private bool _disablePastDates = true;
         private bool _sundayFirst = true;
         private bool _useDayInitials = false;
         private bool _hidePreviousAndNextMonthDays = true;
@@ -54,6 +55,23 @@ namespace Fcaico.Controls.Calendar
         #region Properties
 
         #region Look and Feel customizations
+
+		[Export("DisablePastDates"), Browsable(true)]
+		public bool DisablePastDates
+		{
+			get 
+			{
+				return _disablePastDates;
+			}
+            set
+            {
+                if (_disablePastDates != value)
+                {
+                    _disablePastDates = value;
+                    SetNeedsDisplay();
+                }
+            }
+		}
 
         [Export("SundayFirst"), Browsable(true)]
         public bool SundayFirst
@@ -602,6 +620,11 @@ namespace Fcaico.Controls.Calendar
 
         #region Methods
 
+        public bool IsInTheCurrentMonth(DateTime day)
+        {
+            return (day.Month == Date.Month && day.Year == Date.Year);
+        }
+
 		public override void Draw (RectangleF rect)
 		{
 			_bottomRule.BackgroundColor = RuleColor;
@@ -622,6 +645,7 @@ namespace Fcaico.Controls.Calendar
 
         private void OnPreviousMonth (object sender, EventArgs e)
         {
+
             Date = Date.AddMonths(-1);
         }
 

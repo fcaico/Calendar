@@ -142,6 +142,11 @@ namespace Fcaico.Controls.Calendar
             _monthLabel.Text = MonthName;
             _monthLabel.Font = _calendar.MonthFont;
 
+            if (_calendar.DisablePastDates)
+            {
+                _previousButton.Hidden = _calendar.IsInTheCurrentMonth(DateTime.Now);
+            }
+
             _previousButton.SetImage(_calendar.PreviousMonthImage, UIControlState.Normal);
             _nextButton.SetImage(_calendar.NextMonthImage, UIControlState.Normal);
 
