@@ -1,6 +1,6 @@
-﻿using System;
-using MonoTouch.UIKit;
-using System.Drawing;
+using System;
+using UIKit;
+using CoreGraphics;
 
 namespace Fcaico.Controls.Calendar
 {
@@ -11,6 +11,7 @@ namespace Fcaico.Controls.Calendar
         private readonly UIButton _nextButton;
         private readonly UIView _separator;
         private readonly CalendarView _calendar;
+        NSLayoutConstraint _monthlabelBaselineConstraint;
 
         private DateTime _date = DateTime.Now;
 
@@ -72,8 +73,12 @@ namespace Fcaico.Controls.Calendar
             _separator.TranslatesAutoresizingMaskIntoConstraints = false;
 
             AddConstraint(NSLayoutConstraint.Create(this, NSLayoutAttribute.CenterX, NSLayoutRelation.Equal, _monthLabel, NSLayoutAttribute.CenterX, 1, 0));
-            AddConstraint(NSLayoutConstraint.Create(this, NSLayoutAttribute.CenterY, NSLayoutRelation.Equal, _monthLabel, NSLayoutAttribute.CenterY, 1, 0));
             AddConstraint(NSLayoutConstraint.Create(_monthLabel, NSLayoutAttribute.Width, NSLayoutRelation.Equal, this, NSLayoutAttribute.Width, 0.4f, 0));
+
+            _monthlabelBaselineConstraint = NSLayoutConstraint.Create(this, NSLayoutAttribute.CenterY, NSLayoutRelation.Equal, _monthLabel, NSLayoutAttribute.CenterY, 1, 
+                -_calendar.MonthFontBaselineOffset);
+            AddConstraint(_monthlabelBaselineConstraint);
+
 
             AddConstraint(NSLayoutConstraint.Create(_monthLabel, NSLayoutAttribute.Left, NSLayoutRelation.Equal, _previousButton, NSLayoutAttribute.Right, 1, 0));
             AddConstraint(NSLayoutConstraint.Create(this, NSLayoutAttribute.CenterY, NSLayoutRelation.Equal, _previousButton, NSLayoutAttribute.CenterY, 1, 0));
@@ -132,11 +137,14 @@ namespace Fcaico.Controls.Calendar
             }
         }
 
-        public override void Draw (RectangleF rect)
+        public override void Draw (CGRect rect)
         {
             base.Draw(rect);
 
             BackgroundColor = _calendar.MonthBackgroundColor;
+
+            _monthlabelBaselineConstraint.Constant = -_calendar.MonthFontBaselineOffset;
+            SetNeedsUpdateConstraints();
 
             _monthLabel.TextColor = _calendar.MonthColor;
             _monthLabel.Text = MonthName;

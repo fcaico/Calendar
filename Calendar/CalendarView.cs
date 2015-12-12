@@ -1,8 +1,8 @@
 using System;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using System.CodeDom.Compiler;
-using System.Drawing;
+using CoreGraphics;
 using System.ComponentModel;
 
 namespace Fcaico.Controls.Calendar
@@ -41,6 +41,10 @@ namespace Fcaico.Controls.Calendar
 		private UIFont _weekDayFont = CalendarViewStyleKit.WeekDayFont;
 		private UIFont _weekEndFont = CalendarViewStyleKit.WeekEndFont;
 		private UIFont _selectionFont = CalendarViewStyleKit.SelectionFont;
+
+        private float _monthFontBaselineOffset = 0;
+        private float _dayNameFontBaselineOffset = 0;
+        private float _dayFontBaselineOffset = 0;
 
         private UIImage _previousMonthImage;
         private UIImage _nextMonthImage;
@@ -526,6 +530,50 @@ namespace Fcaico.Controls.Calendar
         }
 
 
+        [Export("MonthFontBaselineOffset"), Browsable(true)]
+        public float MonthFontBaselineOffset
+        {
+            get
+            {
+                return _monthFontBaselineOffset;
+            }
+            set
+            {
+                _monthFontBaselineOffset = value;
+                SetNeedsDisplay();
+            }
+        }
+
+
+        [Export("DayNameFontBaselineOffset"), Browsable(true)]
+        public float DayNameFontBaselineOffset
+        {
+            get
+            {
+                return _dayNameFontBaselineOffset;
+            }
+            set
+            {
+                _dayNameFontBaselineOffset = value;
+                SetNeedsDisplay();
+            }
+        }
+
+        [Export("DayFontBaselineOffset"), Browsable(true)]
+        public float DayFontBaselineOffset
+        {
+            get
+            {
+                return _dayFontBaselineOffset;
+            }
+            set
+            {
+                _dayFontBaselineOffset = value;
+                SetNeedsDisplay();
+            }
+        }
+
+
         public ISite Site
         {
             get;
@@ -580,10 +628,10 @@ namespace Fcaico.Controls.Calendar
 			_dayGrid.DateSelected += OnDateSelected;
 
 			_previousMonthImage = CalendarViewStyleKit.ImageOfPreviousMonth(
-				new RectangleF(0, 0, 30, 30), _selectionColor);
+				new CGRect(0, 0, 30, 30), _selectionColor);
 
 			_nextMonthImage = CalendarViewStyleKit.ImageOfNextMonth(
-				new RectangleF(0, 0, 30, 30), _selectionColor);
+				new CGRect(0, 0, 30, 30), _selectionColor);
 
 			Add (_monthHeader);
 			Add(_dayGrid);
@@ -625,7 +673,7 @@ namespace Fcaico.Controls.Calendar
             return (day.Month == Date.Month && day.Year == Date.Year);
         }
 
-		public override void Draw (RectangleF rect)
+		public override void Draw (CGRect rect)
 		{
 			_bottomRule.BackgroundColor = RuleColor;
 

@@ -1,6 +1,6 @@
 ﻿using System;
-using MonoTouch.UIKit;
-using System.Drawing;
+using UIKit;
+using CoreGraphics;
 
 namespace Fcaico.Controls.Calendar
 {
@@ -15,6 +15,7 @@ namespace Fcaico.Controls.Calendar
         private bool _isInThePast;
         private readonly UIImageView _imageView;
         private readonly UILabel _textView;
+        NSLayoutConstraint _textBaselineConstraint;
 
         #endregion 
 
@@ -133,6 +134,9 @@ namespace Fcaico.Controls.Calendar
             AddConstraint(NSLayoutConstraint.Create(this, NSLayoutAttribute.CenterX, NSLayoutRelation.Equal, _textView, NSLayoutAttribute.CenterX, 1, 0));
             AddConstraint(NSLayoutConstraint.Create(this, NSLayoutAttribute.CenterY, NSLayoutRelation.Equal, _textView, NSLayoutAttribute.CenterY, 1, 0));
 
+            _textBaselineConstraint = NSLayoutConstraint.Create(this, NSLayoutAttribute.CenterY, NSLayoutRelation.Equal, _textView, NSLayoutAttribute.CenterY, 1, -_calendar.DayFontBaselineOffset);
+            AddConstraint(_textBaselineConstraint);
+
             AddConstraint(NSLayoutConstraint.Create(this, NSLayoutAttribute.Width, NSLayoutRelation.Equal, _imageView, NSLayoutAttribute.Width, 1, 0));
             AddConstraint(NSLayoutConstraint.Create(this, NSLayoutAttribute.Height, NSLayoutRelation.Equal, _imageView, NSLayoutAttribute.Height, 1, 0));
             AddConstraint(NSLayoutConstraint.Create(this, NSLayoutAttribute.CenterX, NSLayoutRelation.Equal, _imageView, NSLayoutAttribute.CenterX, 1, 0));
@@ -172,19 +176,19 @@ namespace Fcaico.Controls.Calendar
             }
         }
 
-        public override void TouchesBegan (MonoTouch.Foundation.NSSet touches, UIEvent evt)
+        public override void TouchesBegan (Foundation.NSSet touches, UIEvent evt)
         {
             base.TouchesBegan (touches, evt);
             SelectDateIfAppropriate();
         }
 
-        public override void TouchesMoved (MonoTouch.Foundation.NSSet touches, UIEvent evt)
+        public override void TouchesMoved (Foundation.NSSet touches, UIEvent evt)
         {
             base.TouchesMoved(touches, evt);
             SelectDateIfAppropriate();
         }
 
-        public override void TouchesEnded (MonoTouch.Foundation.NSSet touches, UIEvent evt)
+        public override void TouchesEnded (Foundation.NSSet touches, UIEvent evt)
         {
             base.TouchesEnded(touches, evt);
             SelectDateIfAppropriate();
@@ -252,9 +256,12 @@ namespace Fcaico.Controls.Calendar
             }
         }
 
-        public override void Draw (RectangleF rect)
+        public override void Draw (CGRect rect)
         {
             base.Draw(rect);
+
+            _textBaselineConstraint.Constant = -_calendar.DayFontBaselineOffset;
+            SetNeedsUpdateConstraints();
 
             if (Selected)
             {

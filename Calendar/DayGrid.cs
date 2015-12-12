@@ -1,8 +1,8 @@
 ﻿using System;
-using MonoTouch.UIKit;
-using System.Drawing;
+using UIKit;
+using CoreGraphics;
 using System.Globalization;
-using MonoTouch.Foundation;
+using Foundation;
 using System.Collections.Generic;
 
 namespace Fcaico.Controls.Calendar
@@ -204,17 +204,16 @@ namespace Fcaico.Controls.Calendar
 
         private void DrawDayNames()
         {
-            PointF curLocation = new PointF(0, 0);
-            SizeF cellSize = new SizeF(_dayNamesContainer.Bounds.Width / 7, _dayNamesContainer.Bounds.Height);
+            CGPoint curLocation = new CGPoint(0, 0);
+            CGSize cellSize = new CGSize(_dayNamesContainer.Bounds.Width / 7, _dayNamesContainer.Bounds.Height);
 
             for (int col = 0; col < 7; col++)
             {
                 DayNameView dayNameCell = _dayNameRow[col];
                 dayNameCell.DayName = DayForColumnIndex(col);
-                dayNameCell.Frame = new RectangleF(curLocation, cellSize);
-                dayNameCell.TextAlignment = UITextAlignment.Center;
+                dayNameCell.Frame = new CGRect(curLocation, cellSize);
 
-                curLocation = new PointF(curLocation.X + cellSize.Width, curLocation.Y);
+                curLocation = new CGPoint(curLocation.X + cellSize.Width, curLocation.Y);
             }         
         }
 
@@ -234,8 +233,8 @@ namespace Fcaico.Controls.Calendar
 
         private void DrawDaysOfMonth()
         {
-            PointF curLocation = new PointF(0, 0);
-            SizeF cellSize = new SizeF(_daysContainer.Bounds.Width / 7, _daysContainer.Bounds.Height / 6);
+            CGPoint curLocation = new CGPoint(0, 0);
+            CGSize cellSize = new CGSize(_daysContainer.Bounds.Width / 7, _daysContainer.Bounds.Height / 6);
 
             DateTime curDay = new DateTime(_date.Year, _date.Month, 1);
 
@@ -267,7 +266,7 @@ namespace Fcaico.Controls.Calendar
                     for (int col = 0; col < 7; col++)
                     {
                         DayView dayCell = _dayGrid[row, col];
-                        dayCell.Frame = new RectangleF(curLocation, cellSize);
+                        dayCell.Frame = new CGRect(curLocation, cellSize);
                         dayCell.Hidden = false;
 
 						if (SelectedDate.IsSameDate(curDay))
@@ -287,9 +286,9 @@ namespace Fcaico.Controls.Calendar
                         dayCell.SetNeedsDisplay();
 
                         curDay = curDay.AddDays(1);
-                        curLocation = new PointF(curLocation.X + cellSize.Width, curLocation.Y);
+                        curLocation = new CGPoint(curLocation.X + cellSize.Width, curLocation.Y);
                     }
-                    curLocation = new PointF(0, curLocation.Y + cellSize.Height);
+                    curLocation = new CGPoint(0, curLocation.Y + cellSize.Height);
                 }
             }
         }
@@ -297,7 +296,7 @@ namespace Fcaico.Controls.Calendar
        
 
 
-        public override void Draw (RectangleF rect)
+        public override void Draw (CGRect rect)
         {
             base.Draw(rect);
 

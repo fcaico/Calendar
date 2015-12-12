@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Drawing;
+using CoreGraphics;
 
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 
 namespace CalendarSample
 {
@@ -56,7 +56,7 @@ namespace CalendarSample
 
 			var calendarVC = segue.DestinationViewController as CalenderViewController;
 			if (calendarVC != null) {
-				calendarVC.SelectedDate = TryDatePicker.Date;
+                calendarVC.SelectedDate = TryDatePicker.Date.NSDateToDateTime();
 			}
 		}
 		#endregion

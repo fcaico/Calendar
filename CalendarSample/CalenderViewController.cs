@@ -1,8 +1,8 @@
 using System;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using System.CodeDom.Compiler;
-using System.Drawing;
+using CoreGraphics;
 
 namespace CalendarSample
 {
@@ -22,11 +22,14 @@ namespace CalendarSample
 		{
 			base.ViewDidLoad ();
 
+            Calendar.DayNamesBackgroundColor = UIColor.Orange;
+            Calendar.DayNamesColor = UIColor.Black;
 			Calendar.Date = DateTime.Now;
 			Calendar.SelectedDate = SelectedDate;
-
-			Calendar.UseDayInitials = true;
+            Calendar.UseDayInitials = true;
 			Calendar.HidePreviousAndNextMonthDays = true;
 		}
+
+
 	}
 }
