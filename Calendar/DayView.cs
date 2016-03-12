@@ -132,7 +132,6 @@ namespace Fcaico.Controls.Calendar
             _imageView.TranslatesAutoresizingMaskIntoConstraints = false;
 
             AddConstraint(NSLayoutConstraint.Create(this, NSLayoutAttribute.CenterX, NSLayoutRelation.Equal, _textView, NSLayoutAttribute.CenterX, 1, 0));
-            AddConstraint(NSLayoutConstraint.Create(this, NSLayoutAttribute.CenterY, NSLayoutRelation.Equal, _textView, NSLayoutAttribute.CenterY, 1, 0));
 
             _textBaselineConstraint = NSLayoutConstraint.Create(this, NSLayoutAttribute.CenterY, NSLayoutRelation.Equal, _textView, NSLayoutAttribute.CenterY, 1, -_calendar.DayFontBaselineOffset);
             AddConstraint(_textBaselineConstraint);

@@ -28,6 +28,9 @@ namespace CalendarSample
 			Calendar.SelectedDate = SelectedDate;
             Calendar.UseDayInitials = true;
 			Calendar.HidePreviousAndNextMonthDays = true;
+            //Calendar.DayFontBaselineOffset = 20;
+            //Calendar.DayNameFontBaselineOffset = 20;
+            //Calendar.MonthFontBaselineOffset = 20;
 		}
 
 
